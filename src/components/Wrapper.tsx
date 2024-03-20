@@ -5,9 +5,9 @@ interface WrapperChildren{
 }
 const Wrapper = ({children}:WrapperChildren) => {
   return (
-    <div className="w-[1000px] mx-auto mt-8">
+    <main className="w-[1000px] mx-auto mt-8 bg-slate-100 px-8 rounded-md border border-black">
       {children}
-    </div>
+    </main>
   )
 }
 

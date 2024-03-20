@@ -2,10 +2,8 @@ import InputField from "./InputField";
 const PersonalInfo = () => {
   return (
     <>
-      <main className="bg-slate-100 py-12 px-4 rounded-md">
-        <h2 className="text-2xl mb-4">Personal Information</h2>
-
-        <section className="flex flex-col gap-2">
+        <section className="flex flex-col gap-4 pt-12">
+        <h2 className="text-2xl">Personal Information</h2>
           <InputField name="First Name" />
           <InputField name="Last Name" />
           <InputField name="Title" />
@@ -25,7 +23,6 @@ const PersonalInfo = () => {
           <InputField name="Email" type="email" />
           <InputField name="Description" />
         </section>
-      </main>
     </>
   );
 };

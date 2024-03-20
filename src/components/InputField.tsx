@@ -1,6 +1,6 @@
 interface InputFieldType {
   type?: string;
-  name: string;
+  name?: string;
 }
 
 const InputField = ({ type = "text", name }: InputFieldType) => {
