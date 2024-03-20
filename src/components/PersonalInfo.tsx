@@ -3,7 +3,7 @@ const PersonalInfo = () => {
   return (
     <>
         <section className="flex flex-col gap-4 pt-12">
-        <h2 className="text-2xl">Personal Information</h2>
+        <h2 className="text-2xl font-semibold">Personal Information</h2>
           <InputField name="First Name" />
           <InputField name="Last Name" />
           <InputField name="Title" />
