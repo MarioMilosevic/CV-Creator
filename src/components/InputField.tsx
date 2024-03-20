@@ -1,10 +1,16 @@
 interface InputFieldType {
-  type?: string;
-  placeholder: string;
+  type: string;
+  name: string;
 }
 
-const InputField = ({ type, placeholder }: InputFieldType) => {
-  return <input type={type} placeholder={placeholder} className="p-2 rounded-md focus:border-red-600"/>;
+const InputField = ({ type, name }: InputFieldType) => {
+  return (
+    <input
+      type={type}
+      placeholder={name}
+      className="border-2 border-slate-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-colors duration-300 px-4 py-2 w-full rounded-md"
+    />
+  );
 };
 
 export default InputField;
