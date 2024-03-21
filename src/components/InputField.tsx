@@ -1,9 +1,11 @@
+import { ChangeEvent } from "react";
+
 interface InputFieldType {
   type?: string;
   name?: string;
   value?: string;
   placeholder?: string;
-  handleInputChange:() => void
+  handleInputChange:(e: ChangeEvent<HTMLInputElement>) => void
 }
 const InputField = ({ type = "text", value,name, handleInputChange, placeholder }: InputFieldType) => {
  

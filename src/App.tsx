@@ -47,14 +47,28 @@ function App() {
 
   const updatePersonalInfo = (e) => {
     const { name, value } = e.target;
-    console.log(name)
-    setUser((prevUser) => ({
-      ...prevUser,
+    console.log(name);
+    setUser((prev) => ({
+      ...prev,
       personalInformation: {
-        ...prevUser.personalInformation,
+        ...prev.personalInformation,
         [name]: value,
       },
     }));
+  };
+
+  const updateEducation = (e) => {
+    const { value, name } = e.target;
+
+    setUser((prev) => {
+      const updatedEducation = prev.education.map((el) => {
+        if (name in el) {
+          return { ...el, [name]: value };
+        }
+        return el;
+      });
+      return { ...prev, education: updatedEducation };
+    });
   };
 
   return (
@@ -68,7 +82,10 @@ function App() {
               personalInformation={user.personalInformation}
               updatePersonalInfo={updatePersonalInfo}
             />
-            <Education education={user.education} />
+            <Education
+              education={user.education}
+              updateEducation={updateEducation}
+            />
             <Experience experience={user.experience} />
             <div className="flex flex-col gap-4 pt-12 pb-8">
               <Button
