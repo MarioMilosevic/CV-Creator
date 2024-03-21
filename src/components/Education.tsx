@@ -22,10 +22,10 @@ const Education = ({ education }: EducationTypes) => {
       <InputField value={education.subject} name="Subject" />
       <InputField value={education.fromDate} name="From (dd/mm/yy)" />
       <InputField value={education.toDate} name="To (dd/mm/yy)" />
-      <Button color="bg-slate-800" hoverColor="hover:bg-slate-950">
+      <Button handleClick={() => console.log("nesto")} color="bg-slate-800" hoverColor="hover:bg-slate-950">
         Delete
       </Button>
-      <Button color="bg-slate-800" hoverColor="hover:bg-slate-950">
+      <Button handleClick={() => console.log("nesto")} color="bg-slate-800" hoverColor="hover:bg-slate-950">
         Add Experience
       </Button>
     </section>

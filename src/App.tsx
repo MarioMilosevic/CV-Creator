@@ -35,21 +35,36 @@ function App() {
     fromDate: "",
     toDate: "",
   });
+
+  const goBack = () => {
+    setIsPreviewActive(false)
+  }
   return (
     <>
       <Header />
       <Wrapper>
-        {isPreviewActive && <Preview />}
+        {isPreviewActive && (
+          <Preview
+            personalInformation={personalInformation}
+            education={education}
+            experience={experience}
+            goBack={goBack}
+          />
+        )}
         {!isPreviewActive && (
           <>
-            <PersonalInfo personalInformation={personalInformation}/>
-            <Education education={education}/>
-            <Experience experience={experience}/>
+            <PersonalInfo personalInformation={personalInformation} />
+            <Education education={education} />
+            <Experience experience={experience} />
             <div className="flex flex-col gap-4 pt-12 pb-8">
-              <Button hoverColor="hover:bg-green-600" color="bg-green-500">
+              <Button
+                handleClick={() => setIsPreviewActive(true)}
+                hoverColor="hover:bg-green-600"
+                color="bg-green-500"
+              >
                 Preview
               </Button>
-              <Button hoverColor="hover:bg-red-600" color="bg-red-500">
+              <Button handleClick={() => console.log('treba da resetuje')} hoverColor="hover:bg-red-600" color="bg-red-500">
                 Reset
               </Button>
             </div>

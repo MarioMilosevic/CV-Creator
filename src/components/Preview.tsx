@@ -1,6 +1,40 @@
 import defaultProfile from "../assets/profile.jpeg";
 
-const Preview = () => {
+interface PreviewTypes {
+  personalInformation: {
+    firstName: string;
+    lastName: string;
+    title: string;
+    photo: string;
+    adress: string;
+    phoneNumber: string;
+    email: string;
+    description: string;
+  };
+  education: {
+    universityName: string;
+    city: string;
+    degree: string;
+    subject: string;
+    fromDate: string;
+    toDate: string;
+  };
+  experience: {
+    position: string;
+    company: string;
+    city: string;
+    fromDate: string;
+    toDate: string;
+  };
+  goBack:() => void;
+}
+
+const Preview = ({
+  personalInformation,
+  education,
+  experience,
+  goBack
+}: PreviewTypes) => {
   return (
     <div className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
       <div className="absolute mt-20 ml-12 flex gap-4">
@@ -22,7 +56,7 @@ const Preview = () => {
 
           <span className="">Print</span>
         </button>
-        <button className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100">
+        <button className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100" onClick={goBack}>
           <svg
             stroke="currentColor"
             fill="currentColor"
@@ -49,7 +83,7 @@ const Preview = () => {
         </header>
         <main className="w-full flex flex-1">
           <section className="w-[70%] pl-4 pr-16 py-4">
-            <article>
+            <article className="min-h-[100px]">
               <h3 className="font-semibold text-green-500 text-xl border-b border-b-slate-600">
                 Description
               </h3>
@@ -57,7 +91,7 @@ const Preview = () => {
                 {personalInformation.description}
               </p>
             </article>
-            <article>
+            <article className="min-h-[100px]">
               <h3 className="font-semibold text-green-500 text-xl border-b border-b-slate-600">
                 Education
               </h3>
@@ -70,7 +104,7 @@ const Preview = () => {
                 </div>
               </div>
             </article>
-            <article>
+            <article className="min-h-[100px]">
               <h3 className="font-semibold text-green-500 text-xl border-b border-b-slate-600">
                 Experience
               </h3>
