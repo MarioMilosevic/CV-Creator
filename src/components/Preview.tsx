@@ -5,16 +5,16 @@ import defaultProfile from "../assets/profile.jpeg";
 
 const Preview = () => {
   return (
-    <div className="fixed top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
-      <div className="border border-white mt-20 pl-8  flex gap-4">
-        <button className="rounded-lg p-2 bg-green-500 flex gap-2">
+    <div className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
+      <div className="absolute mt-20 ml-12 flex gap-4">
+        <button className="rounded-lg px-6 py-3 bg-green-500 flex gap-2 justify-center items-center text-slate-100">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-8 h-8"
           >
             <path
               stroke-linecap="round"
@@ -25,10 +25,10 @@ const Preview = () => {
 
           <span className="">Print</span>
         </button>
-        <button className="rounded-lg px-4 py-2 bg-red-500 flex gap-2 items-center">
+        <button className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100">
           <svg
             stroke="currentColor"
-            fill="currenColor"
+            fill="currentColor"
             strokeWidth="0"
             version="1.2"
             baseProfile="tiny"
@@ -36,6 +36,7 @@ const Preview = () => {
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8"
           >
             <path d="M 19.164 19.547 c -1.641 -2.5 -3.669 -3.285 -6.164 -3.484 v 1.437 c 0 0.534 -0.208 1.036 -0.586 1.414 c -0.756 0.756 -2.077 0.751 -2.823 0.005 l -6.293 -6.207 c -0.191 -0.189 -0.298 -0.444 -0.298 -0.713 s 0.107 -0.524 0.298 -0.712 l 6.288 -6.203 c 0.754 -0.755 2.073 -0.756 2.829 0.001 c 0.377 0.378 0.585 0.88 0.585 1.414 v 1.704 c 4.619 0.933 8 4.997 8 9.796 v 1 c 0 0.442 -0.29 0.832 -0.714 0.958 c -0.095 0.027 -0.19 0.042 -0.286 0.042 c -0.331 0 -0.646 -0.165 -0.836 -0.452 Z m -7.141 -5.536 c 2.207 0.056 4.638 0.394 6.758 2.121 c -0.768 -3.216 -3.477 -5.702 -6.893 -6.08 c -0.504 -0.056 -0.888 -0.052 -0.888 -0.052 v -3.497 l -5.576 5.496 l 5.576 5.5 v -3.499 l 1.023 0.011 Z"></path>
           </svg>
