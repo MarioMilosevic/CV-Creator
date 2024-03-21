@@ -16,12 +16,12 @@ const Education = ({ education }: EducationTypes) => {
   return (
     <section className="flex flex-col gap-4 pt-12">
       <h2 className="text-2xl font-semibold">Education</h2>
-      <InputField value={education.universityName} name="University name" />
-      <InputField value={education.city} name="City" />
-      <InputField value={education.degree} name="Degree" />
-      <InputField value={education.subject} name="Subject" />
-      <InputField value={education.fromDate} name="From (dd/mm/yy)" />
-      <InputField value={education.toDate} name="To (dd/mm/yy)" />
+      <InputField name="universityName" value={education.universityName} placeholder="University name" />
+      <InputField name="city" value={education.city} placeholder="City" />
+      <InputField name="degree" value={education.degree} placeholder="Degree" />
+      <InputField name="subject" value={education.subject} placeholder="Subject" />
+      <InputField name="fromDate" value={education.fromDate} placeholder="From (dd/mm/yy)" />
+      <InputField name="toDate" value={education.toDate} placeholder="To (dd/mm/yy)" />
       <Button handleClick={() => console.log("nesto")} color="bg-slate-800" hoverColor="hover:bg-slate-950">
         Delete
       </Button>

@@ -1,40 +1,37 @@
 import defaultProfile from "../assets/profile.jpeg";
 
 interface PreviewTypes {
-  personalInformation: {
-    firstName: string;
-    lastName: string;
-    title: string;
-    photo: string;
-    adress: string;
-    phoneNumber: string;
-    email: string;
-    description: string;
+  user: {
+    personalInformation: {
+      firstName: string;
+      lastName: string;
+      title: string;
+      photo: string;
+      address: string;
+      phoneNumber: string;
+      email: string;
+      description: string;
+    };
+    education: {
+      universityName: string;
+      city: string;
+      degree: string;
+      subject: string;
+      fromDate: string;
+      toDate: string;
+    };
+    experience: {
+      position: string;
+      company: string;
+      city: string;
+      fromDate: string;
+      toDate: string;
+    };
   };
-  education: {
-    universityName: string;
-    city: string;
-    degree: string;
-    subject: string;
-    fromDate: string;
-    toDate: string;
-  };
-  experience: {
-    position: string;
-    company: string;
-    city: string;
-    fromDate: string;
-    toDate: string;
-  };
-  goBack:() => void;
+  goBack: () => void;
 }
 
-const Preview = ({
-  personalInformation,
-  education,
-  experience,
-  goBack
-}: PreviewTypes) => {
+const Preview = ({ user, goBack }: PreviewTypes) => {
   return (
     <div className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
       <div className="absolute mt-20 ml-12 flex gap-4">
@@ -56,7 +53,10 @@ const Preview = ({
 
           <span className="">Print</span>
         </button>
-        <button className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100" onClick={goBack}>
+        <button
+          className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100"
+          onClick={goBack}
+        >
           <svg
             stroke="currentColor"
             fill="currentColor"
@@ -77,9 +77,9 @@ const Preview = ({
       <div className="mx-auto flex flex-col items-center mt-2 fixed top-[50%] right-[50%] bg-slate-50 w-[950px] h-screen translate-x-[50%] translate-y-[-50%] z-20">
         <header className="bg-green-600 w-full px-5 pt-5 pb-16 text-slate-100">
           <h2 className="text-3xl font-semibold">
-            {`${personalInformation.firstName} ${personalInformation.lastName}`}{" "}
+            {`${user.personalInformation.firstName} ${user.personalInformation.lastName}`}{" "}
           </h2>
-          <p>{personalInformation.title}</p>
+          <p>{user.personalInformation.title}</p>
         </header>
         <main className="w-full flex flex-1">
           <section className="w-[70%] pl-4 pr-16 py-4">
@@ -88,7 +88,7 @@ const Preview = ({
                 Description
               </h3>
               <p className="py-2 italic pr-2">
-                {personalInformation.description}
+                {user.personalInformation.description}
               </p>
             </article>
             <article className="min-h-[100px]">
@@ -96,11 +96,11 @@ const Preview = ({
                 Education
               </h3>
               <div className="flex gap-24 pr-2 py-2">
-                <p className="font-semibold">{education.fromDate}</p>
+                <p className="font-semibold">{user.education.fromDate}</p>
                 <div>
-                  <p className="font-semibold">{education.degree}</p>
-                  <p>{education.subject}</p>
-                  <p>{education.universityName}</p>
+                  <p className="font-semibold">{user.education.degree}</p>
+                  <p>{user.education.subject}</p>
+                  <p>{user.education.universityName}</p>
                 </div>
               </div>
             </article>
@@ -109,11 +109,11 @@ const Preview = ({
                 Experience
               </h3>
               <div className="flex gap-24 pr-2 py-2">
-                <p className="font-semibold">{experience.fromDate}</p>
+                <p className="font-semibold">{user.experience.fromDate}</p>
                 <div>
-                  <p className="font-semibold">{experience.position}</p>
-                  <p>{experience.company}</p>
-                  <p>{experience.city}</p>
+                  <p className="font-semibold">{user.experience.position}</p>
+                  <p>{user.experience.company}</p>
+                  <p>{user.experience.city}</p>
                 </div>
               </div>
             </article>
@@ -131,16 +131,16 @@ const Preview = ({
                 </h2>
                 <div className="flex flex-col gap-2 py-2">
                   <div>
-                    <h2 className="font-semibold">Adress</h2>
-                    <p>{personalInformation.adress}</p>
+                    <h2 className="font-semibold">Address</h2>
+                    <p>{user.personalInformation.address}</p>
                   </div>
                   <div>
                     <h2 className="font-semibold ">Phone Number</h2>
                   </div>
-                  <p>{personalInformation.phoneNumber}</p>
+                  <p>{user.personalInformation.phoneNumber}</p>
                   <div>
                     <h2 className="font-semibold ">Email</h2>
-                    <p>{personalInformation.email}</p>
+                    <p>{user.personalInformation.email}</p>
                   </div>
                 </div>
               </div>

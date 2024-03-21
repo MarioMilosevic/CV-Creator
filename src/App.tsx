@@ -8,54 +8,68 @@ import Preview from "./components/Preview";
 import Button from "./components/Button";
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
-  const [personalInformation, setPersonalInformation] = useState({
-    firstName: "",
-    lastName: "",
-    title: "",
-    photo: "",
-    adress: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
-  });
 
-  const [experience, setExperience] = useState({
-    position: "",
-    company: "",
-    city: "",
-    fromDate: "",
-    toDate: "",
-  });
-
-  const [education, setEducation] = useState({
-    universityName: "",
-    city: "",
-    degree: "",
-    subject: "",
-    fromDate: "",
-    toDate: "",
+  const [user, setUser] = useState({
+    personalInformation: {
+      firstName: "",
+      lastName: "",
+      title: "",
+      photo: "",
+      address: "",
+      phoneNumber: "",
+      email: "",
+      description: "",
+    },
+    experience: [
+      {
+        position: "",
+        company: "",
+        city: "",
+        fromDate: "",
+        toDate: "",
+      },
+    ],
+    education: [
+      {
+        universityName: "",
+        city: "",
+        degree: "",
+        subject: "",
+        fromDate: "",
+        toDate: "",
+      },
+    ],
   });
 
   const goBack = () => {
-    setIsPreviewActive(false)
-  }
+    setIsPreviewActive(false);
+  };
+
+  const updatePersonalInfo = (e) => {
+    const { name, value } = e.target;
+    console.log(name)
+    setUser((prevUser) => ({
+      ...prevUser,
+      personalInformation: {
+        ...prevUser.personalInformation,
+        [name]: value,
+      },
+    }));
+  };
+
   return (
     <>
       <Header />
       <Wrapper>
-        {isPreviewActive && (
-          <Preview
-            personalInformation={personalInformation}
-            education={education}
-            experience={experience}
-            goBack={goBack}
-          />
-        )}
+        {isPreviewActive && <Preview user={user} goBack={goBack} />}
         {!isPreviewActive && (
           <>
-            <PersonalInfo personalInformation={personalInformation} />
-            <Education education={education} />
-            <Experience experience={experience} />
+            <PersonalInfo
+              personalInformation={user.personalInformation}
+              updatePersonalInfo={updatePersonalInfo}
+            />
+            <Education education={user.education} />
+            <Experience experience={user.experience} />
             <div className="flex flex-col gap-4 pt-12 pb-8">
               <Button
                 handleClick={() => setIsPreviewActive(true)}
@@ -64,7 +78,11 @@ function App() {
               >
                 Preview
               </Button>
-              <Button handleClick={() => console.log('treba da resetuje')} hoverColor="hover:bg-red-600" color="bg-red-500">
+              <Button
+                handleClick={() => console.log("treba da resetuje")}
+                hoverColor="hover:bg-red-600"
+                color="bg-red-500"
+              >
                 Reset
               </Button>
             </div>
