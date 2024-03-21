@@ -3,17 +3,21 @@ import Wrapper from "./components/Wrapper";
 import PersonalInfo from "./components/PersonalInfo";
 import Education from "./components/Education";
 import Experience from "./Experience";
+import Preview from "./components/Preview";
 import Button from "./components/Button";
 function App() {
   return (
     <>
       <Header />
       <Wrapper>
-      <PersonalInfo/>
-      <Education/>
-      <Experience/>
-      {/* <Button color="bg-green-500">Preview</Button>
-      <Button color="bg-green-400">Reset</Button> */}
+        <Preview/>
+        {/* <PersonalInfo />
+        <Education />
+        <Experience />
+        <div className="flex flex-col gap-4 pt-12 pb-8">
+        <Button hoverColor="hover:bg-green-600" color="bg-green-500">Preview</Button>
+        <Button hoverColor="hover:bg-red-600" color="bg-red-500">Reset</Button>
+        </div> */}
       </Wrapper>
     </>
   );
