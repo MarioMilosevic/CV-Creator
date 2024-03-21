@@ -1,32 +1,6 @@
 import defaultProfile from "../assets/profile.jpeg";
-import { useState } from "react";
-const Preview = () => {
-  const [personalInformation, setPersonalInformation] = useState({
-    firstName: "",
-    lastName: "",
-    title: "",
-    photo: "",
-    adress: "",
-    phoneNumber: "",
-    email: "",
-    description: "",
-  });
-  const [education, setEducation] = useState({
-    universityName: "",
-    city: "",
-    degree: "",
-    subject: "",
-    fromDate: "",
-    toDate: "",
-  });
 
-  const [experience, setExperience] = useState({
-    position: "",
-    company: "",
-    city: "",
-    fromDate: "",
-    toDate: "",
-  });
+const Preview = () => {
   return (
     <div className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
       <div className="absolute mt-20 ml-12 flex gap-4">

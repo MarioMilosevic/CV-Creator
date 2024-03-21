@@ -1,12 +1,27 @@
 import InputField from "./InputField";
-const PersonalInfo = () => {
+
+interface PersonalInfoTypes{
+  personalInformation:{
+    firstName: string,
+    lastName: string,
+    title: string,
+    photo: string,
+    adress: string,
+    phoneNumber: string,
+    email: string,
+    description: string,
+  }
+}
+
+const PersonalInfo = ({personalInformation}:PersonalInfoTypes) => {
+ 
   return (
     <>
         <section className="flex flex-col gap-4 pt-12">
         <h2 className="text-2xl font-semibold">Personal Information</h2>
-          <InputField name="First Name" />
-          <InputField name="Last Name" />
-          <InputField name="Title" />
+          <InputField value={personalInformation.firstName} name="First Name" />
+          <InputField value={personalInformation.lastName} name="Last Name" />
+          <InputField value={personalInformation.title} name="Title" />
           <input
             type="file"
             id="photo"
@@ -18,10 +33,10 @@ const PersonalInfo = () => {
           >
             Photo
           </label>
-          <InputField name="Adress" />
-          <InputField name="Phone number" />
-          <InputField name="Email" type="email" />
-          <InputField name="Description" />
+          <InputField value={personalInformation.adress} name="Adress" />
+          <InputField value={personalInformation.phoneNumber} name="Phone number" />
+          <InputField value={personalInformation.email} name="Email" type="email" />
+          <InputField value={personalInformation.description} name="Description" />
         </section>
     </>
   );
