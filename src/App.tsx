@@ -11,34 +11,35 @@ function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
   const [user, setUser] = useState({
     personalInformation: {
-      firstName: "",
-      lastName: "",
-      title: "",
+      firstName: "Mario",
+      lastName: "Milosevic",
+      title: "Front End Developer",
       photo: "",
-      address: "",
-      phoneNumber: "",
-      email: "",
-      description: "",
+      address: "Novo Naselje c-13",
+      phoneNumber: "+38269988",
+      email: "mariomilosevic887@gmail.com",
+      description:
+        "Visok 185cm tezak oko 97kg, iz benca 135kg mrtvo 220kg a cucanj 170 total 525, ucim JavaScript tacnije sada vec React JS",
     },
     experience: [
       {
         id: crypto.randomUUID(),
-        position: "",
-        company: "",
-        city: "",
-        fromDate: "",
-        toDate: "",
+        position: "LifeGuard",
+        company: "Sunshine DOO",
+        city: "Kotor",
+        fromDate: "01/01/2022",
+        toDate: "05/05/2024",
       },
     ],
     education: [
       {
         id: crypto.randomUUID(),
-        universityName: "",
-        city: "",
-        degree: "",
-        subject: "",
-        fromDate: "",
-        toDate: "",
+        universityName: "Univerzitet Crne Gore",
+        city: "Kotor",
+        degree: "Bachelor of Marine Science",
+        subject: "Meteo",
+        fromDate: "15/09/2015",
+        toDate: "20/06/2019",
       },
     ],
   });
@@ -81,12 +82,12 @@ function App() {
   const addEducation = () => {
     const newEducation = {
       id: crypto.randomUUID(),
-      universityName: "",
-      city: "",
-      degree: "",
-      subject: "",
-      fromDate: "",
-      toDate: "",
+      universityName: "Univerzitet Crne Gore",
+      city: "Kotor",
+      degree: "Bachelor of Marine science",
+      subject: "Matematika",
+      fromDate: "02/02/2022",
+      toDate: "05/05/2024",
     };
     setUser((prev) => ({
       ...prev,
@@ -97,11 +98,11 @@ function App() {
   const addExperience = () => {
     const newExperience = {
       id: crypto.randomUUID(),
-      position: "",
-      company: "",
-      city: "",
-      fromDate: "",
-      toDate: "",
+      position: "LifeGuard",
+      company: "Sunshine DOO",
+      city: "Kotor",
+      fromDate: "01/01/2022",
+      toDate: "05/05/2024",
     };
     setUser((prev) => ({
       ...prev,

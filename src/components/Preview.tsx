@@ -28,11 +28,12 @@ interface PreviewTypes {
       toDate: string;
     };
   };
-  goBack: () => void;
+  goBackToForm: () => void;
 }
 
-const Preview = ({ user, goBack }: PreviewTypes) => {
-  console.log(user)
+const Preview = ({ user, goBackToForm }: PreviewTypes) => {
+  console.log(user.education);
+  console.log(user.experience);
 
   return (
     <div className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
@@ -57,7 +58,7 @@ const Preview = ({ user, goBack }: PreviewTypes) => {
         </button>
         <button
           className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100"
-          onClick={goBack}
+          onClick={goBackToForm}
         >
           <svg
             stroke="currentColor"
@@ -93,33 +94,46 @@ const Preview = ({ user, goBack }: PreviewTypes) => {
                 {user.personalInformation.description}
               </p>
             </article>
+            <h3 className="font-semibold text-green-500 text-xl  border-b border-b-slate-600">
+              Education
+            </h3>
             <article className="min-h-[100px]">
-              <h3 className="font-semibold text-green-500 text-xl border-b border-b-slate-600">
-                Education
-              </h3>
-              <div className="flex gap-24 pr-2 py-2">
-                <p className="font-semibold">{user.education[0].fromDate}</p>
-                <p className="font-semibold">{user.education[0].toDate}</p>
-                <div>
-                  <p className="font-semibold">{user.education[0].degree}</p>
-                  <p>{user.education[0].subject}</p>
-                  <p>{user.education[0].universityName}</p>
-                </div>
+              <div className="flex flex-col py-2">
+                {user.education.map((edu) => {
+                  return (
+                    <div className="flex gap-24 pr-2 py-1" key={edu.id}>
+                      <div className="flex w-[40%] justify-between">
+                        <p className="font-semibold">{edu.fromDate}</p>
+                        <p className="font-semibold">{edu.toDate}</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold">{edu.subject}</p>
+                        <p>{edu.universityName}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </article>
+            <h3 className="font-semibold text-green-500 text-xl  border-b border-b-slate-600">
+              Experience
+            </h3>
             <article className="min-h-[100px]">
-              <h3 className="font-semibold text-green-500 text-xl border-b border-b-slate-600">
-                Experience
-              </h3>
-              <div className="flex gap-24 pr-2 py-2">
-                <p className="font-semibold">{user.experience[0].fromDate}</p>
-                <p className="font-semibold">{user.experience[0].toDate}</p>
-                <div>
-                  <p className="font-semibold">{user.experience[0].position}</p>
-                  <p>{user.experience[0].company}</p>
-                  <p>{user.experience[0].city}</p>
-                </div>
-              </div>
+              {user.experience.map((exp) => {
+                return (
+                  <div className="flex gap-24 pr-2 py-2" key={exp.id}>
+                    <div className="flex justify-between w-[40%]">
+                      <p className="font-semibold">{exp.fromDate}</p>
+                      <p className="font-semibold">{exp.toDate}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold">{exp.position}</p>
+                      <p>{exp.company}</p>
+                      <p>{exp.city}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </article>
           </section>
           <aside className="w-[30%] bg-slate-200 flex-1">
