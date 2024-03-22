@@ -5,12 +5,19 @@ interface InputFieldType {
   name?: string;
   value?: string;
   placeholder?: string;
-  handleInputChange:(e: ChangeEvent<HTMLInputElement>) => void
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
-const InputField = ({ type = "text", value,name, handleInputChange, placeholder }: InputFieldType) => {
- 
+const InputField = ({
+  type = "text",
+  value,
+  name,
+  handleInputChange,
+  placeholder,
+  id,
+}: InputFieldType) => {
   return (
     <input
+      id={id}
       type={type}
       name={name}
       placeholder={placeholder}

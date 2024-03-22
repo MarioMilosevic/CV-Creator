@@ -50,8 +50,8 @@ function App() {
 
   const updatePersonalInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(name)
-    console.log(value)
+    console.log(name);
+    console.log(value);
     setUser((prev) => ({
       ...prev,
       personalInformation: {
@@ -62,17 +62,28 @@ function App() {
   };
 
   const updateEducation = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setUser((prev) => ({
+    // console.dir(e.target)
+    // const { value, name, id } = e.target;
+    // console.log(id)
+    // setUser((prev) => ({
+    //   ...prev,
+    //   education: prev.education.map((el) =>
+    //     name in el ? { ...el, [name]: value } : el
+    //   ),
+    // }));
+    const {value, name, id} = e.target;
+    setUser(prev => ({
       ...prev,
-      education: prev.education.map((el) =>
-        name in el ? { ...el, [name]: value } : el
-      ),
-    }));
+      education: prev.education.map(edu => edu.id === id ? { ...edu, [name]: value } : edu)
+  }));
+  console.log(user.education)
   };
 
   const updateExperience = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
+    // trebam da nadjem taj objekat koji ima id, i onda na njemu da operisem
+    // console.dir(e.target)
+    const { value, name, id } = e.target;
+    console.log(id)
     setUser((prev) => ({
       ...prev,
       experience: prev.experience.map((el) =>
@@ -84,12 +95,12 @@ function App() {
   const addEducation = () => {
     const newEducation = {
       id: crypto.randomUUID(),
-      universityName: "Univerzitet Crne Gore",
-      city: "Kotor",
-      degree: "Bachelor of Marine science",
-      subject: "Matematika",
-      fromDate: "02/02/2022",
-      toDate: "05/05/2024",
+      universityName: "",
+      city: "",
+      degree: "",
+      subject: "",
+      fromDate: "",
+      toDate: "",
     };
     setUser((prev) => ({
       ...prev,
@@ -110,6 +121,7 @@ function App() {
       ...prev,
       experience: [...prev.experience, newExperience],
     }));
+    console.log(user)
   };
 
   const deleteExperience = (id) => {
@@ -143,6 +155,7 @@ function App() {
                 <Education
                   edu={edu}
                   key={edu.id}
+                  id={edu.id}
                   updateEducation={updateEducation}
                   deleteEducation={() => deleteEducation(edu.id)}
                 />
