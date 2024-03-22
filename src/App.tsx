@@ -71,6 +71,22 @@ function App() {
     });
   };
 
+  
+  const updateExperience = (e) => {
+    const { value, name } = e.target;
+    setUser((prev) => {
+      const updatedExperience = prev.experience.map((el) => {
+        if (name in el) {
+          return { ...el, [name]: value };
+        }
+        return el;
+      });
+      return { ...prev, experience: updatedExperience };
+    });
+    console.log(user)
+  };
+
+
   return (
     <>
       <Header />
@@ -86,7 +102,7 @@ function App() {
               education={user.education}
               updateEducation={updateEducation}
             />
-            <Experience experience={user.experience} />
+            <Experience experience={user.experience} updateExperience={updateExperience}/>
             <div className="flex flex-col gap-4 pt-12 pb-8">
               <Button
                 handleClick={() => setIsPreviewActive(true)}

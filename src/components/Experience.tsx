@@ -9,22 +9,39 @@ interface ExperienceTypes {
     toDate: string;
   };
 }
-const Experience = ({ experience }: ExperienceTypes) => {
+const Experience = ({ experience, updateExperience }: ExperienceTypes) => {
   return (
     <section className="flex flex-col gap-4 pt-12">
       <h2 className="text-2xl font-semibold">Experience</h2>
-      <InputField name="position" value={experience.position} name="Position" />
-      <InputField name="company" value={experience.company} name="Company" />
-      <InputField name="city" value={experience.city} name="City" />
       <InputField
-        name="fromData"
-        value={experience.fromDate}
-        name="From (dd/mm/yy)"
+        handleInputChange={updateExperience}
+        name="position"
+        value={experience.position}
+        placeholder="Position"
       />
       <InputField
-        name="toData"
+        handleInputChange={updateExperience}
+        name="company"
+        value={experience.company}
+        placeholder="Company"
+      />
+      <InputField
+        handleInputChange={updateExperience}
+        name="city"
+        value={experience.city}
+        placeholder="City"
+      />
+      <InputField
+        handleInputChange={updateExperience}
+        name="fromDate"
+        value={experience.fromDate}
+        placeholder="From (dd/mm/yy)"
+      />
+      <InputField
+        handleInputChange={updateExperience}
+        name="toDate"
         value={experience.toDate}
-        name="To (dd/mm/yy)"
+        placeholder="To (dd/mm/yy)"
       />
       <Button
         handleClick={() => console.log("treba da brise")}
