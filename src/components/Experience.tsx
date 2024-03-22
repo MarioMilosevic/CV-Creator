@@ -1,46 +1,46 @@
 import InputField from "./InputField";
 import Button from "./Button";
 interface ExperienceTypes {
-  experience: {
+  exp: {
     position: string;
     company: string;
     city: string;
     fromDate: string;
     toDate: string;
-  };
+  }[];
+  updateExperience:(e: React.ChangeEvent<HTMLInputElement>) => void
 }
-const Experience = ({ experience, updateExperience }: ExperienceTypes) => {
+const Experience = ({ exp, updateExperience }: ExperienceTypes) => {
   return (
-    <section className="flex flex-col gap-4 pt-12">
-      <h2 className="text-2xl font-semibold">Experience</h2>
+    <section className="flex flex-col gap-4 py-4 pb-4">
       <InputField
         handleInputChange={updateExperience}
         name="position"
-        value={experience.position}
+        value={exp.position}
         placeholder="Position"
       />
       <InputField
         handleInputChange={updateExperience}
         name="company"
-        value={experience.company}
+        value={exp.company}
         placeholder="Company"
       />
       <InputField
         handleInputChange={updateExperience}
         name="city"
-        value={experience.city}
+        value={exp.city}
         placeholder="City"
       />
       <InputField
         handleInputChange={updateExperience}
         name="fromDate"
-        value={experience.fromDate}
+        value={exp.fromDate}
         placeholder="From (dd/mm/yy)"
       />
       <InputField
         handleInputChange={updateExperience}
         name="toDate"
-        value={experience.toDate}
+        value={exp.toDate}
         placeholder="To (dd/mm/yy)"
       />
       <Button
@@ -50,13 +50,13 @@ const Experience = ({ experience, updateExperience }: ExperienceTypes) => {
       >
         Delete
       </Button>
-      <Button
+      {/* <Button
         handleClick={() => console.log("treba da dodaje")}
         color="bg-slate-800"
         hoverColor="hover:bg-slate-950"
       >
         Add Experience
-      </Button>
+      </Button> */}
     </section>
   );
 };

@@ -41,13 +41,12 @@ function App() {
     ],
   });
 
-  const goBack = () => {
+  const goBackToForm = () => {
     setIsPreviewActive(false);
   };
 
-  const updatePersonalInfo = (e) => {
+  const updatePersonalInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(name);
     setUser((prev) => ({
       ...prev,
       personalInformation: {
@@ -57,52 +56,102 @@ function App() {
     }));
   };
 
-  const updateEducation = (e) => {
+  const updateEducation = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-
-    setUser((prev) => {
-      const updatedEducation = prev.education.map((el) => {
-        if (name in el) {
-          return { ...el, [name]: value };
-        }
-        return el;
-      });
-      return { ...prev, education: updatedEducation };
-    });
+    setUser((prev) => ({
+      ...prev,
+      education: prev.education.map((el) =>
+        name in el ? { ...el, [name]: value } : el
+      ),
+    }));
   };
 
-  
-  const updateExperience = (e) => {
+  const updateExperience = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    setUser((prev) => {
-      const updatedExperience = prev.experience.map((el) => {
-        if (name in el) {
-          return { ...el, [name]: value };
-        }
-        return el;
-      });
-      return { ...prev, experience: updatedExperience };
-    });
-    console.log(user)
+    setUser((prev) => ({
+      ...prev,
+      experience: prev.experience.map((el) =>
+        name in el ? { ...el, [name]: value } : el
+      ),
+    }));
   };
 
+  const addExperience = () => {
+    const newExperience = {
+      position: "",
+      company: "",
+      city: "",
+      fromDate: "",
+      toDate: "",
+    };
+    setUser((prev) => ({
+      ...prev,
+      experience: [...prev.experience, newExperience],
+    }));
+  };
+
+  const addEducation = () => {
+    const newEducation = {
+      universityName: "",
+      city: "",
+      degree: "",
+      subject: "",
+      fromDate: "",
+      toDate: "",
+    }
+    setUser((prev) => ({
+      ...prev, 
+      education: [...prev.education, newEducation]
+    }))
+  }
 
   return (
     <>
       <Header />
       <Wrapper>
-        {isPreviewActive && <Preview user={user} goBack={goBack} />}
+        {isPreviewActive && <Preview user={user} goBackToForm={goBackToForm} />}
         {!isPreviewActive && (
           <>
             <PersonalInfo
               personalInformation={user.personalInformation}
               updatePersonalInfo={updatePersonalInfo}
             />
-            <Education
-              education={user.education}
-              updateEducation={updateEducation}
-            />
-            <Experience experience={user.experience} updateExperience={updateExperience}/>
+            <h2 className="text-2xl font-semibold pt-12">Education</h2>
+            {user.education.map((edu, index) => {
+              return (
+                <Education
+                  edu={edu}
+                  key={index}
+                  updateEducation={updateEducation}
+                />
+              );
+            })}
+            <Button
+              handleClick={addEducation}
+              color="bg-slate-800"
+              hoverColor="hover:bg-slate-950"
+            >
+              Add Education
+            </Button>
+            <h2 className="text-2xl font-semibold pt-12">Experience</h2>
+
+            {user.experience.map((exp, index) => {
+              return (
+                <Experience
+                  exp={exp}
+                  key={index}
+                  updateExperience={updateExperience}
+                />
+              );
+            })}
+            <Button
+              handleClick={addExperience}
+              color="bg-slate-800"
+              hoverColor="hover:bg-slate-950"
+            >
+              Add Experience
+            </Button>
+
             <div className="flex flex-col gap-4 pt-12 pb-8">
               <Button
                 handleClick={() => setIsPreviewActive(true)}

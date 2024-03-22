@@ -2,54 +2,54 @@ import InputField from "./InputField";
 import Button from "./Button";
 
 interface EducationTypes {
-  education: {
+  edu: {
     universityName: string;
     city: string;
     degree: string;
     subject: string;
     fromDate: string;
     toDate: string;
-  };
+  }[];
+  updateEducation:(e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Education = ({ education, updateEducation }: EducationTypes) => {
+const Education = ({ edu, updateEducation }: EducationTypes) => {
   return (
-    <section className="flex flex-col gap-4 pt-12">
-      <h2 className="text-2xl font-semibold">Education</h2>
+    <section className="flex flex-col gap-4 py-4">
       <InputField
         handleInputChange={updateEducation}
         name="universityName"
-        value={education.universityName}
+        value={edu.universityName}
         placeholder="University name"
       />
       <InputField
         handleInputChange={updateEducation}
         name="city"
-        value={education.city}
+        value={edu.city}
         placeholder="City"
       />
       <InputField
         handleInputChange={updateEducation}
         name="degree"
-        value={education.degree}
+        value={edu.degree}
         placeholder="Degree"
       />
       <InputField
         handleInputChange={updateEducation}
         name="subject"
-        value={education.subject}
+        value={edu.subject}
         placeholder="Subject"
       />
       <InputField
         handleInputChange={updateEducation}
         name="fromDate"
-        value={education.fromDate}
+        value={edu.fromDate}
         placeholder="From (dd/mm/yy)"
       />
       <InputField
         handleInputChange={updateEducation}
         name="toDate"
-        value={education.toDate}
+        value={edu.toDate}
         placeholder="To (dd/mm/yy)"
       />
       <Button
@@ -59,13 +59,7 @@ const Education = ({ education, updateEducation }: EducationTypes) => {
       >
         Delete
       </Button>
-      <Button
-        handleClick={() => console.log("nesto")}
-        color="bg-slate-800"
-        hoverColor="hover:bg-slate-950"
-      >
-        Add Experience
-      </Button>
+     
     </section>
   );
 };
