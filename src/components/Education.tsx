@@ -10,10 +10,11 @@ interface EducationTypes {
     fromDate: string;
     toDate: string;
   }[];
-  updateEducation:(e: React.ChangeEvent<HTMLInputElement>) => void
+  updateEducation:(e: React.ChangeEvent<HTMLInputElement>) => void;
+  deleteEducation:(id:string) => void;
 }
 
-const Education = ({ edu, updateEducation }: EducationTypes) => {
+const Education = ({ edu, updateEducation, deleteEducation }: EducationTypes) => {
   return (
     <section className="flex flex-col gap-4 py-4">
       <InputField
@@ -53,7 +54,7 @@ const Education = ({ edu, updateEducation }: EducationTypes) => {
         placeholder="To (dd/mm/yy)"
       />
       <Button
-        handleClick={() => console.log("nesto")}
+        handleClick={deleteEducation}
         color="bg-slate-800"
         hoverColor="hover:bg-slate-950"
       >

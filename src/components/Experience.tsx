@@ -8,9 +8,10 @@ interface ExperienceTypes {
     fromDate: string;
     toDate: string;
   }[];
-  updateExperience:(e: React.ChangeEvent<HTMLInputElement>) => void
+  updateExperience:(e: React.ChangeEvent<HTMLInputElement>) => void;
+  deleteExperience:(id:string) => void;
 }
-const Experience = ({ exp, updateExperience }: ExperienceTypes) => {
+const Experience = ({ exp, updateExperience, deleteExperience }: ExperienceTypes) => {
   return (
     <section className="flex flex-col gap-4 py-4 pb-4">
       <InputField
@@ -44,19 +45,12 @@ const Experience = ({ exp, updateExperience }: ExperienceTypes) => {
         placeholder="To (dd/mm/yy)"
       />
       <Button
-        handleClick={() => console.log("treba da brise")}
+        handleClick={deleteExperience}
         color="bg-slate-800"
         hoverColor="hover:bg-slate-950"
       >
         Delete
       </Button>
-      {/* <Button
-        handleClick={() => console.log("treba da dodaje")}
-        color="bg-slate-800"
-        hoverColor="hover:bg-slate-950"
-      >
-        Add Experience
-      </Button> */}
     </section>
   );
 };

@@ -6,9 +6,9 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Preview from "./components/Preview";
 import Button from "./components/Button";
+
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
-
   const [user, setUser] = useState({
     personalInformation: {
       firstName: "",
@@ -22,6 +22,7 @@ function App() {
     },
     experience: [
       {
+        id: crypto.randomUUID(),
         position: "",
         company: "",
         city: "",
@@ -31,6 +32,7 @@ function App() {
     ],
     education: [
       {
+        id: crypto.randomUUID(),
         universityName: "",
         city: "",
         degree: "",
@@ -76,8 +78,25 @@ function App() {
     }));
   };
 
+  const addEducation = () => {
+    const newEducation = {
+      id: crypto.randomUUID(),
+      universityName: "",
+      city: "",
+      degree: "",
+      subject: "",
+      fromDate: "",
+      toDate: "",
+    };
+    setUser((prev) => ({
+      ...prev,
+      education: [...prev.education, newEducation],
+    }));
+  };
+
   const addExperience = () => {
     const newExperience = {
+      id: crypto.randomUUID(),
       position: "",
       company: "",
       city: "",
@@ -90,20 +109,19 @@ function App() {
     }));
   };
 
-  const addEducation = () => {
-    const newEducation = {
-      universityName: "",
-      city: "",
-      degree: "",
-      subject: "",
-      fromDate: "",
-      toDate: "",
-    }
+  const deleteExperience = (id) => {
     setUser((prev) => ({
-      ...prev, 
-      education: [...prev.education, newEducation]
-    }))
-  }
+      ...prev,
+      experience: prev.experience.filter((exp) => exp.id !== id),
+    }));
+  };
+
+  const deleteEducation = (id) => {
+    setUser((prev) => ({
+      ...prev,
+      education: prev.education.filter((edu) => edu.id !== id),
+    }));
+  };
 
   return (
     <>
@@ -117,12 +135,13 @@ function App() {
               updatePersonalInfo={updatePersonalInfo}
             />
             <h2 className="text-2xl font-semibold pt-12">Education</h2>
-            {user.education.map((edu, index) => {
+            {user.education.map((edu) => {
               return (
                 <Education
                   edu={edu}
-                  key={index}
+                  key={edu.id}
                   updateEducation={updateEducation}
+                  deleteEducation={() => deleteEducation(edu.id)}
                 />
               );
             })}
@@ -135,12 +154,13 @@ function App() {
             </Button>
             <h2 className="text-2xl font-semibold pt-12">Experience</h2>
 
-            {user.experience.map((exp, index) => {
+            {user.experience.map((exp) => {
               return (
                 <Experience
                   exp={exp}
-                  key={index}
+                  key={exp.id}
                   updateExperience={updateExperience}
+                  deleteExperience={() => deleteExperience(exp.id)}
                 />
               );
             })}
