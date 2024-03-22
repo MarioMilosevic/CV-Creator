@@ -39,12 +39,14 @@ const PersonalInfo = ({
           handleInputChange={updatePersonalInfo}
           value={personalInformation.title}
           placeholder="Title"
-        />
+          />
         <input
           type="file"
           id="photo"
+          name="photo"
+          onChange={updatePersonalInfo}
           className="absolute w-[0.1px] h-[0.1px] opacity-0 overflow-hidden z-[-1]"
-        />
+          />
         <label
           htmlFor="photo"
           className="border-2 text-slate-400 bg-slate-50 border-slate-300 cursor-pointer px-4 py-2 w-full rounded-md "

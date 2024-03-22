@@ -50,6 +50,8 @@ function App() {
 
   const updatePersonalInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    console.log(name)
+    console.log(value)
     setUser((prev) => ({
       ...prev,
       personalInformation: {
@@ -98,11 +100,11 @@ function App() {
   const addExperience = () => {
     const newExperience = {
       id: crypto.randomUUID(),
-      position: "LifeGuard",
-      company: "Sunshine DOO",
-      city: "Kotor",
-      fromDate: "01/01/2022",
-      toDate: "05/05/2024",
+      position: "",
+      company: "",
+      city: "",
+      fromDate: "",
+      toDate: "",
     };
     setUser((prev) => ({
       ...prev,
