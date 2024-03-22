@@ -62,34 +62,24 @@ function App() {
   };
 
   const updateEducation = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // console.dir(e.target)
-    // const { value, name, id } = e.target;
-    // console.log(id)
-    // setUser((prev) => ({
-    //   ...prev,
-    //   education: prev.education.map((el) =>
-    //     name in el ? { ...el, [name]: value } : el
-    //   ),
-    // }));
-    const {value, name, id} = e.target;
-    setUser(prev => ({
+    const { value, name, id } = e.target;
+    setUser((prev) => ({
       ...prev,
-      education: prev.education.map(edu => edu.id === id ? { ...edu, [name]: value } : edu)
-  }));
-  console.log(user.education)
+      education: prev.education.map((edu) =>
+        edu.id === id ? { ...edu, [name]: value } : edu
+      ),
+    }));
   };
 
   const updateExperience = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // trebam da nadjem taj objekat koji ima id, i onda na njemu da operisem
-    // console.dir(e.target)
     const { value, name, id } = e.target;
-    console.log(id)
     setUser((prev) => ({
       ...prev,
       experience: prev.experience.map((el) =>
-        name in el ? { ...el, [name]: value } : el
+        el.id === id ? { ...el, [name]: value } : el
       ),
     }));
+    console.log(user.experience)
   };
 
   const addEducation = () => {
@@ -121,7 +111,7 @@ function App() {
       ...prev,
       experience: [...prev.experience, newExperience],
     }));
-    console.log(user)
+    console.log(user);
   };
 
   const deleteExperience = (id) => {
@@ -175,6 +165,7 @@ function App() {
                 <Experience
                   exp={exp}
                   key={exp.id}
+                  id={exp.id}
                   updateExperience={updateExperience}
                   deleteExperience={() => deleteExperience(exp.id)}
                 />
