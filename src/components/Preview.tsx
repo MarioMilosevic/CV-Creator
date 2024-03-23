@@ -142,7 +142,8 @@ const Preview = ({ user, goBackToForm}: PreviewTypes) => {
           <aside className="w-[30%] bg-slate-200 flex-1">
             <div className="h-full flex flex-col">
               <img
-                src={user.personalInformation.photo}
+                // src={user.personalInformation.photo}
+                src={defaultProfile}
                 alt="Profile Picture"
                 className="w-full h-[260px] object-cover"
               />

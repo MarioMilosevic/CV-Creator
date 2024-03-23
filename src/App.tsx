@@ -8,7 +8,7 @@ import Preview from "./components/Preview";
 import Button from "./components/Button";
 
 // za sliku da vidim
-// za print da vidim 
+// za print da vidim
 
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
@@ -21,8 +21,7 @@ function App() {
       address: "",
       phoneNumber: "",
       email: "",
-      description:
-        "",
+      description: "",
     },
     experience: [
       {
@@ -80,7 +79,7 @@ function App() {
         el.id === id ? { ...el, [name]: value } : el
       ),
     }));
-    console.log(user.experience)
+    console.log(user.experience);
   };
 
   const addEducation = () => {
@@ -126,6 +125,42 @@ function App() {
       ...prev,
       education: prev.education.filter((edu) => edu.id !== id),
     }));
+  };
+
+  const reset = () => {
+    setUser({
+      personalInformation: {
+        firstName: "",
+        lastName: "",
+        title: "",
+        photo: "",
+        address: "",
+        phoneNumber: "",
+        email: "",
+        description: "",
+      },
+      experience: [
+        {
+          id: crypto.randomUUID(),
+          position: "",
+          company: "",
+          city: "",
+          fromDate: "",
+          toDate: "",
+        },
+      ],
+      education: [
+        {
+          id: crypto.randomUUID(),
+          universityName: "",
+          city: "",
+          degree: "",
+          subject: "",
+          fromDate: "",
+          toDate: "",
+        },
+      ],
+    });
   };
 
   return (
@@ -188,7 +223,7 @@ function App() {
                 Preview
               </Button>
               <Button
-                handleClick={() => console.log("treba da resetuje")}
+                handleClick={reset}
                 hoverColor="hover:bg-red-600"
                 color="bg-red-500"
               >
