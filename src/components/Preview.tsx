@@ -1,45 +1,23 @@
 import defaultProfile from "../assets/profile.jpeg";
 import { useRef } from "react";
 import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { Resume } from "../types/ResumeType";
 
 interface PreviewTypes {
-  user: {
-    personalInformation: {
-      firstName: string;
-      lastName: string;
-      title: string;
-      photo: string;
-      address: string;
-      phoneNumber: string;
-      email: string;
-      description: string;
-    };
-    education: {
-      universityName: string;
-      city: string;
-      degree: string;
-      subject: string;
-      fromDate: string;
-      toDate: string;
-    };
-    experience: {
-      position: string;
-      company: string;
-      city: string;
-      fromDate: string;
-      toDate: string;
-    };
-  };
+  user: Resume;
   goBackToForm: () => void;
 }
 
-const Preview = ({ user, goBackToForm}: PreviewTypes) => {
-  const componentRef = useRef()
+const Preview = ({ user, goBackToForm }: PreviewTypes) => {
+  const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  })
+  });
   return (
-    <div ref={componentRef} className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
+    <div
+      ref={componentRef}
+      className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all"
+    >
       <div className="absolute mt-20 ml-12 flex gap-4">
         <button className="rounded-lg px-6 py-3 bg-green-500 flex gap-2 justify-center items-center text-slate-100">
           <svg
@@ -142,8 +120,7 @@ const Preview = ({ user, goBackToForm}: PreviewTypes) => {
           <aside className="w-[30%] bg-slate-200 flex-1">
             <div className="h-full flex flex-col">
               <img
-                // src={user.personalInformation.photo}
-                src={defaultProfile}
+                src={user.personalInformation.photo || defaultProfile}
                 alt="Profile Picture"
                 className="w-full h-[260px] object-cover"
               />

@@ -1,15 +1,9 @@
 import InputField from "./InputField";
 import Button from "./Button";
+import { Education as EducationType } from "../types/ResumeType";
 
 interface EducationTypes {
-  edu: {
-    universityName: string;
-    city: string;
-    degree: string;
-    subject: string;
-    fromDate: string;
-    toDate: string;
-  }[];
+  edu:EducationType;
   updateEducation: (e: React.ChangeEvent<HTMLInputElement>) => void;
   deleteEducation: (id: string) => void;
 }

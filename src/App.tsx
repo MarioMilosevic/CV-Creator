@@ -6,45 +6,14 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Preview from "./components/Preview";
 import Button from "./components/Button";
+import { resume } from "./initialState";
 
 // za sliku da vidim
 // za print da vidim
 
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
-  const [user, setUser] = useState({
-    personalInformation: {
-      firstName: "",
-      lastName: "",
-      title: "",
-      photo: "",
-      address: "",
-      phoneNumber: "",
-      email: "",
-      description: "",
-    },
-    experience: [
-      {
-        id: crypto.randomUUID(),
-        position: "",
-        company: "",
-        city: "",
-        fromDate: "",
-        toDate: "",
-      },
-    ],
-    education: [
-      {
-        id: crypto.randomUUID(),
-        universityName: "",
-        city: "",
-        degree: "",
-        subject: "",
-        fromDate: "",
-        toDate: "",
-      },
-    ],
-  });
+  const [user, setUser] = useState(resume);
 
   const goBackToForm = () => {
     setIsPreviewActive(false);
@@ -59,6 +28,19 @@ function App() {
         [name]: value,
       },
     }));
+  };
+
+  const handlePhoto = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const photoUrl = URL.createObjectURL(e.target.files[0]);
+      setUser((prevUser) => ({
+        ...prevUser,
+        personalInformation: {
+          ...prevUser.personalInformation,
+          photo: photoUrl,
+        },
+      }));
+    }
   };
 
   const updateEducation = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +61,6 @@ function App() {
         el.id === id ? { ...el, [name]: value } : el
       ),
     }));
-    console.log(user.experience);
   };
 
   const addEducation = () => {
@@ -173,6 +154,7 @@ function App() {
             <PersonalInfo
               personalInformation={user.personalInformation}
               updatePersonalInfo={updatePersonalInfo}
+              handlePhoto={handlePhoto}
             />
             <h2 className="text-2xl font-semibold pt-12">Education</h2>
             {user.education.map((edu) => {
