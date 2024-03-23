@@ -1,5 +1,7 @@
 import defaultProfile from "../assets/profile.jpeg";
-import marioslika from "../assets/20240321_105523.jpg"
+import { useRef } from "react";
+import ReactToPrint, { useReactToPrint } from "react-to-print";
+
 interface PreviewTypes {
   user: {
     personalInformation: {
@@ -31,11 +33,13 @@ interface PreviewTypes {
   goBackToForm: () => void;
 }
 
-const Preview = ({ user, goBackToForm }: PreviewTypes) => {
-console.log(user.personalInformation.photo)
-
+const Preview = ({ user, goBackToForm}: PreviewTypes) => {
+  const componentRef = useRef()
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  })
   return (
-    <div className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
+    <div ref={componentRef} className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all">
       <div className="absolute mt-20 ml-12 flex gap-4">
         <button className="rounded-lg px-6 py-3 bg-green-500 flex gap-2 justify-center items-center text-slate-100">
           <svg
@@ -53,7 +57,7 @@ console.log(user.personalInformation.photo)
             />
           </svg>
 
-          <span onClick={() => window.print()}>Print</span>
+          <span onClick={handlePrint}>Print</span>
         </button>
         <button
           className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100"
@@ -138,8 +142,7 @@ console.log(user.personalInformation.photo)
           <aside className="w-[30%] bg-slate-200 flex-1">
             <div className="h-full flex flex-col">
               <img
-                src={marioslika}
-                // src={`${!user.personalInformation.photo && defaultProfile}`}
+                src={user.personalInformation.photo}
                 alt="Profile Picture"
                 className="w-full h-[260px] object-cover"
               />

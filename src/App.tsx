@@ -7,39 +7,42 @@ import Experience from "./components/Experience";
 import Preview from "./components/Preview";
 import Button from "./components/Button";
 
+// za sliku da vidim
+// za print da vidim 
+
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
   const [user, setUser] = useState({
     personalInformation: {
-      firstName: "Mario",
-      lastName: "Milosevic",
-      title: "Front End Developer",
+      firstName: "",
+      lastName: "",
+      title: "",
       photo: "",
-      address: "Novo Naselje c-13",
-      phoneNumber: "+38269988",
-      email: "mariomilosevic887@gmail.com",
+      address: "",
+      phoneNumber: "",
+      email: "",
       description:
-        "Visok 185cm tezak oko 97kg, iz benca 135kg mrtvo 220kg a cucanj 170 total 525, ucim JavaScript tacnije sada vec React JS",
+        "",
     },
     experience: [
       {
         id: crypto.randomUUID(),
-        position: "LifeGuard",
-        company: "Sunshine DOO",
-        city: "Kotor",
-        fromDate: "01/01/2022",
-        toDate: "05/05/2024",
+        position: "",
+        company: "",
+        city: "",
+        fromDate: "",
+        toDate: "",
       },
     ],
     education: [
       {
         id: crypto.randomUUID(),
-        universityName: "Univerzitet Crne Gore",
-        city: "Kotor",
-        degree: "Bachelor of Marine Science",
-        subject: "Meteo",
-        fromDate: "15/09/2015",
-        toDate: "20/06/2019",
+        universityName: "",
+        city: "",
+        degree: "",
+        subject: "",
+        fromDate: "",
+        toDate: "",
       },
     ],
   });
@@ -50,8 +53,6 @@ function App() {
 
   const updatePersonalInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
     setUser((prev) => ({
       ...prev,
       personalInformation: {
@@ -111,7 +112,6 @@ function App() {
       ...prev,
       experience: [...prev.experience, newExperience],
     }));
-    console.log(user);
   };
 
   const deleteExperience = (id) => {

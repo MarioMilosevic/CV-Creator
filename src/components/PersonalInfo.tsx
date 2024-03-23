@@ -18,9 +18,17 @@ const PersonalInfo = ({
   personalInformation,
   updatePersonalInfo,
 }: PersonalInfoTypes) => {
+
+  const handleOnChange = (e:React.FormEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLImageElement && {
+      filed:FileList
+    }
+  }
+ 
+
   return (
     <>
-      <section className="flex flex-col gap-4 pt-12">
+      <form className="flex flex-col gap-4 pt-12">
         <h2 className="text-2xl font-semibold">Personal Information</h2>
         <InputField
           name="firstName"
@@ -44,6 +52,7 @@ const PersonalInfo = ({
           type="file"
           id="photo"
           name="photo"
+          value={personalInformation.photo}
           onChange={updatePersonalInfo}
           className="absolute w-[0.1px] h-[0.1px] opacity-0 overflow-hidden z-[-1]"
           />
@@ -78,7 +87,7 @@ const PersonalInfo = ({
           value={personalInformation.description}
           placeholder="Description"
         />
-      </section>
+      </form>
     </>
   );
 };
