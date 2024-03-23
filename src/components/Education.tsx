@@ -6,6 +6,7 @@ interface EducationTypes {
   edu:EducationType;
   updateEducation: (e: React.ChangeEvent<HTMLInputElement>) => void;
   deleteEducation: (id: string) => void;
+  id:string;
 }
 
 const Education = ({
@@ -59,7 +60,7 @@ const Education = ({
         id={id}
       />
       <Button
-        handleClick={deleteEducation}
+        handleClick={() =>deleteEducation(id)}
         color="bg-slate-800"
         hoverColor="hover:bg-slate-950"
       >

@@ -6,6 +6,7 @@ interface InputFieldType {
   value?: string;
   placeholder?: string;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  id?:string;
 }
 const InputField = ({
   type = "text",

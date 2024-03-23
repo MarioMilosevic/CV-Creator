@@ -8,9 +8,6 @@ import Preview from "./components/Preview";
 import Button from "./components/Button";
 import { resume } from "./initialState";
 
-// za sliku da vidim
-// za print da vidim
-
 function App() {
   const [isPreviewActive, setIsPreviewActive] = useState(false);
   const [user, setUser] = useState(resume);
@@ -30,7 +27,7 @@ function App() {
     }));
   };
 
-  const handlePhoto = (e) => {
+  const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const photoUrl = URL.createObjectURL(e.target.files[0]);
       setUser((prevUser) => ({
@@ -94,14 +91,14 @@ function App() {
     }));
   };
 
-  const deleteExperience = (id) => {
+  const deleteExperience = (id: string) => {
     setUser((prev) => ({
       ...prev,
       experience: prev.experience.filter((exp) => exp.id !== id),
     }));
   };
 
-  const deleteEducation = (id) => {
+  const deleteEducation = (id: string) => {
     setUser((prev) => ({
       ...prev,
       education: prev.education.filter((edu) => edu.id !== id),

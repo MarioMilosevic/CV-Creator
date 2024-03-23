@@ -1,17 +1,19 @@
 import InputField from "./InputField";
 import Button from "./Button";
+import { Experience as ExperienceType } from "../types/ResumeType";
+
 interface ExperienceTypes {
-  exp: {
-    position: string;
-    company: string;
-    city: string;
-    fromDate: string;
-    toDate: string;
-  }[];
-  updateExperience:(e: React.ChangeEvent<HTMLInputElement>) => void;
-  deleteExperience:(id:string) => void;
+  exp: ExperienceType;
+  updateExperience: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  deleteExperience: (id: string) => void;
+  id: string;
 }
-const Experience = ({ exp, updateExperience, deleteExperience, id }: ExperienceTypes) => {
+const Experience = ({
+  exp,
+  updateExperience,
+  deleteExperience,
+  id,
+}: ExperienceTypes) => {
   return (
     <section className="flex flex-col gap-4 py-4 pb-4">
       <InputField
@@ -50,7 +52,7 @@ const Experience = ({ exp, updateExperience, deleteExperience, id }: ExperienceT
         id={id}
       />
       <Button
-        handleClick={deleteExperience}
+        handleClick={() => deleteExperience(id)}
         color="bg-slate-800"
         hoverColor="hover:bg-slate-950"
       >

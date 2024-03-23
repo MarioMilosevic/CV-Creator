@@ -1,17 +1,10 @@
 import InputField from "./InputField";
+import { PersonalInformation as PersonalInformationType } from "../types/ResumeType";
 
 interface PersonalInfoTypes {
-  personalInformation: {
-    firstName: string;
-    lastName: string;
-    title: string;
-    photo: string;
-    address: string;
-    phoneNumber: string;
-    email: string;
-    description: string;
-  };
+  personalInformation: PersonalInformationType;
   updatePersonalInfo: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePhoto: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const PersonalInfo = ({
@@ -46,7 +39,6 @@ const PersonalInfo = ({
           type="file"
           id="photo"
           name="photo"
-          // value={personalInformation.photo}
           onChange={handlePhoto}
           className="absolute w-[0.1px] h-[0.1px] opacity-0 overflow-hidden z-[-1]"
         />

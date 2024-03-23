@@ -1,6 +1,6 @@
 import defaultProfile from "../assets/profile.jpeg";
-import { useRef } from "react";
-import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { useRef, RefObject } from "react";
+import { useReactToPrint } from "react-to-print";
 import { Resume } from "../types/ResumeType";
 
 interface PreviewTypes {
@@ -9,7 +9,7 @@ interface PreviewTypes {
 }
 
 const Preview = ({ user, goBackToForm }: PreviewTypes) => {
-  const componentRef = useRef();
+  const componentRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
@@ -19,7 +19,10 @@ const Preview = ({ user, goBackToForm }: PreviewTypes) => {
       className="fixed flex top-0 right-0 w-full h-full bg-slate-900 bg-opacity-80 z-10 duration-1000 transition-all"
     >
       <div className="absolute mt-20 ml-12 flex gap-4">
-        <button className="rounded-lg px-6 py-3 bg-green-500 flex gap-2 justify-center items-center text-slate-100">
+        <button
+          className="rounded-lg px-6 py-3 bg-green-500 flex gap-2 justify-center items-center text-slate-100"
+          onClick={handlePrint}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -35,7 +38,7 @@ const Preview = ({ user, goBackToForm }: PreviewTypes) => {
             />
           </svg>
 
-          <span onClick={handlePrint}>Print</span>
+          <span>Print</span>
         </button>
         <button
           className="rounded-lg px-6 py-3 bg-red-500 flex gap-2 justify-center items-center text-slate-100"
