@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import PersonalInfo from "./components/PersonalInfo";
 import Education from "./components/Education";
@@ -212,6 +213,7 @@ function App() {
           </>
         )}
       </Wrapper>
+      <Footer/>
     </>
   );
 }
